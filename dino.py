@@ -12,7 +12,7 @@ diretorio_imagens = os.path.join(diretorio_principal, 'imagens')
 diretorio_sons = os.path.join(diretorio_principal, 'sons')
 
 LARGURA = 640
-ALTURA = 480
+ALTURA = 460
     
 BRANCO = (255,215,0)
 
@@ -59,11 +59,6 @@ class Dino(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.som_pulo = pygame.mixer.Sound(os.path.join(diretorio_sons, 'jump_sound.wav'))
         self.som_pulo.set_volume(1)
-        #self.imagens_dinossauro = [] 
-        #for i in range(3):
-            #img = sprite_sheet.subsurface((i * 32,0), (32,32))
-            #img = pygame.transform.scale(img, (32*3, 32*3))
-            #self.imagens_dinossauro.append(img)
         self.imagempersonagem = []
         self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo0.png'))
         self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo1.png'))    
@@ -79,7 +74,7 @@ class Dino(pygame.sprite.Sprite):
         self.image = self.imagempersonagem[self.index_lista]
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.pos_y_inicial = ALTURA - 32 - 96//2
+        self.pos_y_inicial = ALTURA - 25 - 96//2
         self.rect.topleft = (100, self.pos_y_inicial) #368   416(centro y)
         self.pulo = False
 
@@ -135,7 +130,7 @@ class Chao(pygame.sprite.Sprite):
             self.rect.x = LARGURA
         self.rect.x -= 10
     
-class Cacto(pygame.sprite.Sprite):
+class Cacto(pygame.sprite.Sprite):   
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = sprite_sheet.subsurface((5*32, 0), (32,32))
