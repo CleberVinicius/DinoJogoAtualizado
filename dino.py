@@ -32,7 +32,7 @@ colidiu = False
 
 escolha_obstaculo = choice([0, 1])
 
-pontos = 0
+pontos = 0 
 
 velocidade_jogo = 10
 imagen_defundo=pygame.image.load("imagens/cenariofundo.png")
@@ -54,22 +54,32 @@ def reiniciar_jogo():
     cacto.rect.x = LARGURA
     escolha_obstaculo = choice([0, 1])
 
-class Dino(pygame.sprite.Sprite):
+class Dino(pygame.sprite.Sprite): 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.som_pulo = pygame.mixer.Sound(os.path.join(diretorio_sons, 'jump_sound.wav'))
         self.som_pulo.set_volume(1)
-        self.imagens_dinossauro = []
-        for i in range(3):
-            img = sprite_sheet.subsurface((i * 32,0), (32,32))
-            img = pygame.transform.scale(img, (32*3, 32*3))
-            self.imagens_dinossauro.append(img)
-        
+        #self.imagens_dinossauro = [] 
+        #for i in range(3):
+            #img = sprite_sheet.subsurface((i * 32,0), (32,32))
+            #img = pygame.transform.scale(img, (32*3, 32*3))
+            #self.imagens_dinossauro.append(img)
+        self.imagempersonagem = []
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo0.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo1.png'))    
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo2.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo3.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo4.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo5.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo6.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo7.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo8.png'))
+        self.imagempersonagem.append(pygame.image.load('imagens/imagempersonagemcorrendo9.png'))
         self.index_lista = 0
-        self.image = self.imagens_dinossauro[self.index_lista]
+        self.image = self.imagempersonagem[self.index_lista]
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.pos_y_inicial = ALTURA - 64 - 96//2
+        self.pos_y_inicial = ALTURA - 32 - 96//2
         self.rect.topleft = (100, self.pos_y_inicial) #368   416(centro y)
         self.pulo = False
 
@@ -94,7 +104,7 @@ class Dino(pygame.sprite.Sprite):
         if self.index_lista > 2:
             self.index_lista = 0
         self.index_lista += 0.25
-        self.image = self.imagens_dinossauro[int(self.index_lista)]
+        self.image = self.imagempersonagem[int(self.index_lista)]
 
 class Nuvens(pygame.sprite.Sprite):
     def __init__(self):
